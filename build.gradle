@@ -2,10 +2,11 @@ plugins { // (1)
     id 'org.springframework.boot' version '2.4.1' // RELEASE 삭제.... 2.5.5
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
+
 }
 
 group 'com.jojoldu1.book'
-version '1.0.4-SNAPSHOT'
+version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
 repositories {
@@ -21,7 +22,22 @@ test { // (2)
 dependencies {
     //(3)
     implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+    // lombok
+    implementation('org.projectlombok:lombok')
+    implementation ('junit:junit:4.13.1')
+    annotationProcessor('org.projectlombok:lombok')
+    testImplementation('org.projectlombok:lombok')
+    testAnnotationProcessor('org.projectlombok:lombok')
+
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation("org.mariadb.jdbc:mariadb-java-client")
+    implementation('com.h2database:h2')
+    implementation('org.springframework.session:spring-session-jdbc')
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
 
 
 
